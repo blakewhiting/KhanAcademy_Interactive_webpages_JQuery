@@ -8,21 +8,47 @@
             position: absolute;
             top: 210px;
             left: 378px;
+            
+        }
+        #old-leafers {
+            position: absolute;
+            top: 207px;
+            left: 237px;
+            
+        }
+        #young-leafers {
+            position: absolute;
+            top: 285px;
+            left: 500px;
         }
             
         </style>
     </head>
     <body>
 
-    <img src="https://www.kasandbox.org/programming-images/landscapes/beach-with-palm-trees.png">
+    <img src="https://www.kasandbox.org/programming-images/landscapes/beach-with-palm-trees.png" id="background">
 
     <img src="https://www.kasandbox.org/programming-images/avatars/leafers-seedling.png" id="leafers">
     
+        <img src="https://www.kasandbox.org/programming-images/avatars/leafers-ultimate.png" id="old-leafers">
+        
+            
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
+
+    
         $("#leafers").on("click", function(event) {
-            // Do something!
+            
+            $("#leafers").css("top", "100px").css("transition", "ease 3s");
         });
+        $("#old-leafers").on("click", function(event){
+            $("#old-leafers").attr("src", "https://www.kasandbox.org/programming-images/avatars/leafers-seed.png").css("transition", "linear 3s");
+        });
+        $("#background").on("click", function(event){
+            $("#background").attr("src", "https://www.kasandbox.org/programming-images/landscapes/beach-in-hawaii.png");
+        });
+        
     </script>
     </body>
 </html>
