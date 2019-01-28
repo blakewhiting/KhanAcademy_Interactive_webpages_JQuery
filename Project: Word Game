@@ -15,6 +15,19 @@
                 font-size: 2em;
             }
             
+            #result{
+                margin-top:10px;
+                border:1px solid black;
+                font-size:20px;
+                color: white;
+                padding:5px;
+                width: 50%;
+            }
+            
+            .hide{
+                display:none;
+            }
+            
         </style>
     </head>
     <body>
@@ -22,19 +35,38 @@
     <h1>Word game!</h1>
     <form id="joke-form">
         <label>
-            Unscramble these letters to form a word:<Br>
+            Unscramble these letters to form a word ( please type in uppercase ):<Br>
             <span class="scrambled">REYJUQ</span>
             <br>
             <input type="text" size="10">
         </label>
         <button type="submit">Check</button>
     </form>
-
+    <div id="result" class="hide"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
+    
+    var wordsScramble = ["REYJUQ", "UFN", "RILVAAEB", "INCOTFU"];
+    var wordsResult = ["JQUERY", "FUN", "VARIABLE", "FUNCTION"];
         // when the user submits the form,
         //   check that their answer is correct
         //   and show them appropriate message
+        $('#joke-form').on('submit',function(event){
+            event.preventDefault();
+            if($(this).find('input[type=text]').val()===wordsResult[wordsScramble.indexOf($('.scrambled').text())]){
+                $('#result').css('background','#00CC00');
+                $('#result').text("Correct!")
+                $('#result').removeClass('hide');
+            } else{
+                $('#result').css('background','#CC0000');
+                $('#result').text("Incorrect!")
+                $('#result').removeClass('hide');
+            }
+        });
+    $(document).ready(function(){
+        var ind = Math.floor(Math.random()*(wordsScramble.length));
+        $('.scrambled').text(wordsScramble[ind]);
+    })
     </script>
     </body>
 </html>
