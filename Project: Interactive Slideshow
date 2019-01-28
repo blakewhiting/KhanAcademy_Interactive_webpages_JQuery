@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Project: Interactive slideshow</title>
+        <style>
+        .btn {
+            background-color:orange;
+        }
+        </style>
+    </head>
+    <body>
+    
+    <br>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Yamaha_M7CL_with_Dugan_E_automixer.jpg/300px-Yamaha_M7CL_with_Dugan_E_automixer.jpg" width="400" alt="Console">
+    <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/L-Acoustics_logo.jpg" width="380" height="340" alt="L-Acoustics">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/FOH_Racks.jpg" width="400" alt="Array">
+    <button type="button"id="previous" class="btn">Previous</button>
+    <button type="button"id="next" class="btn">Next</button>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+$("img").hide();
+var current = 2;
+var galleryLength = $("img").length + 1
+
+$("img:nth-child("+ current +")").show();
+    
+$("#previous").on("click",function(){
+    if(current -1 !== 1) {
+    $("img:nth-child("+current+")").fadeOut( function(){
+    $("img:nth-child("+(current-1)+")").fadeIn()
+    current--
+    });
+}
+    else {
+    $("img:nth-child("+current+")").fadeOut( function(){
+    $("img:nth-child("+(current+2)+")").fadeIn() 
+    current=4
+    });
+    }
+});
+
+    $("#next").on("click",function(){
+        if(current !== galleryLength) {
+        $("img:nth-child("+current+")").fadeOut( function(){
+        $("img:nth-child("+ (current+1) +")").fadeIn()
+        current++
+        });
+}
+        else {
+        $("img:nth-child("+current+")").fadeOut( function(){
+        $("img:nth-child("+ (current-2) +")").fadeIn()
+        current=2
+        });
+        }
+    });
+    </script> 
+    
+    </body>
+</html>
